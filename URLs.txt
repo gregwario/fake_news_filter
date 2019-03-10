@@ -21,6 +21,13 @@ conservativefrontline.com
 countynewsroom.info
 dailybuzzlive.com
 stuppid.com
+thegatewaypundit.com
+drudgereport.com
+globalresearch.ca
+libertywriters.com
+naturalnews.com
+newspunch.com
+worldnewsdailyreport.com
 
 Real
 cnn.com
@@ -43,6 +50,13 @@ king5.com
 nbcwashington.com
 houstonpress.com
 latimes.com
+ap.org/en-us/
+wsj.com
+snopes.com
+reuters.com
+economist.com
+pbs.org/newshour/
+pewresearch.org
 
 Satire
 theonion.com
@@ -66,3 +80,9 @@ islamicanews.com
 landoverbaptist.org
 nationalreport.net
 scrappleface.com
+babylonbee.com
+thehardtimes.net
+reductress.com
+duffelblog.com
+freewoodpost.net
+christwire.org
