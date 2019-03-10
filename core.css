@@ -31,3 +31,14 @@ form {
     overflow-y: scroll;
     padding: 4px 8px;
 }
+.veracity-icon {
+    position: absolute;
+    right: 0;
+    height: 55px;
+    width: 55px;
+}
+
+.r {
+    /* google's row result classname */
+    padding-right: 60px;
+}

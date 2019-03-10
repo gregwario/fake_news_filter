@@ -12,8 +12,15 @@
         {
             "matches": ["https://*.google.com/*"],
             "run_at": "document_idle",
-            "js": ["contentScript.js"]
+            "js": ["contentScript.js"],
+            "css": ["core.css"]
         }
+    ],
+    "web_accessible_resources": [
+        "images/veracity-fake.png",
+        "images/veracity-real.png",
+        "images/veracity-satire.png",
+        "images/veracity-indeterminate.png"
     ],
     "page_action": {
         "default_popup": "popup.html",

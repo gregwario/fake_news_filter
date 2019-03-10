@@ -2,12 +2,10 @@
 
 chrome.storage.sync.get('urls', function(data) {
     const createImg = type => {
-        const img = new Image(); //document.createElement('img');
+        const img = new Image();
         img.src = chrome.runtime.getURL(`images/veracity-${type}.png`);
         img.alt = type;
-        img.height = '55px';
-        img.width = '55px';
-        img.style.alignSelf = 'flex-start';
+        img.className = 'veracity-icon';
         return img;
     };
 
@@ -25,7 +23,7 @@ chrome.storage.sync.get('urls', function(data) {
             container.appendChild(createImg('fake'));
         } else if (data.urls.real.some(src => link.href.includes(src))) {
             console.log(`Real: ${link.href}`);
-            link.style.backgroundColor = green;
+            container.style.backgroundColor = green;
             container.appendChild(createImg('real'));
         } else if (data.urls.satire.some(src => link.href.includes(src))) {
             console.log(`Satire: ${link.href}`);
@@ -37,6 +35,5 @@ chrome.storage.sync.get('urls', function(data) {
             container.appendChild(createImg('indeterminate'));
         }
         container.style.display = 'flex';
-        // container.style.justifyContent = 'space-between';
     });
 });
