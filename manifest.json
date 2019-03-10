@@ -1,27 +1,34 @@
 {
-	"name": "Fake News Filter",
-	"version": "0.1",
-	"description": "CS361 - Fake News Filter",
-	"permissions": ["activeTab", "declarativeContent", "storage"],
-	"options_page": "options.html",
-	"background": {
-		"scripts": ["background.js"],
-		"persistent": false
-	},
-	"page_action": {
-		"default_popup": "popup.html",
-		"default_icon": {
-			"16": "images/fnf-off-16px.png",
-			"32": "images/fnf-off-32px.png",
-			"48": "images/fnf-off-48px.png",
-			"128": "images/fnf-off-128px.png"
-		}
-	},
-	"icons": {
-		"16": "images/fnf-off-16px.png",
-		"32": "images/fnf-off-32px.png",
-		"48": "images/fnf-off-48px.png",
-		"128": "images/fnf-off-128px.png"
-	},
-	"manifest_version": 2
+    "name": "Fake News Filter",
+    "version": "0.1",
+    "description": "CS361 - Fake News Filter",
+    "permissions": ["activeTab", "declarativeContent", "storage"],
+    "options_page": "options.html",
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://*.google.com/*"],
+            "run_at": "document_idle",
+            "js": ["contentScript.js"]
+        }
+    ],
+    "page_action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "images/fnf-on-16px.png",
+            "32": "images/fnf-on-32px.png",
+            "48": "images/fnf-on-48px.png",
+            "128": "images/fnf-on-128px.png"
+        }
+    },
+    "icons": {
+        "16": "images/fnf-on-16px.png",
+        "32": "images/fnf-on-32px.png",
+        "48": "images/fnf-on-48px.png",
+        "128": "images/fnf-on-128px.png"
+    },
+    "manifest_version": 2
 }
