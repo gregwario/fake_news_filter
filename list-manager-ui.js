@@ -84,14 +84,21 @@ function applyRemoveButtonListeners() {
     const removeButtons = document.querySelectorAll('.button--remove');
     removeButtons.forEach(removeButton => {
         removeButton.addEventListener('click', e => {
-            const removedParent = e.target.parentNode.parentNode;
-            const type = removedParent.parentNode.className.substring(11);
-            const removedURL = removedParent.querySelector('.url').innerHTML;
-            removedParent.style.display = 'none';
-            const newURLs = data.urls;
-            newURLs[type] = newURLs[type].filter(item => item !== removedURL);
-            chrome.storage.sync.set({ urls: newURLs }, function() {
-                console.log('The URL has been removed:', removedURL);
+            chrome.storage.sync.get('urls', function(data) {
+                const removedParent = e.target.parentNode.parentNode;
+                const type = removedParent.parentNode.className.substring(11);
+                const removedURL = removedParent.querySelector('.url')
+                    .innerHTML;
+                removedParent.style.display = 'none';
+                const newURLs = data.urls;
+                if (typeof newURLs[type] !== 'undefined') {
+                    newURLs[type] = newURLs[type].filter(
+                        item => item !== removedURL
+                    );
+                    chrome.storage.sync.set({ urls: newURLs }, function() {
+                        console.log('The URL has been removed:', removedURL);
+                    });
+                }
             });
         });
     });
