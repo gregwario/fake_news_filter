@@ -1,0 +1,33 @@
+.visually-hidden {
+    /* taken from bootstrap's sr-only */
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+form {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 8px;
+}
+.urls {
+    line-height: 1em;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+}
+.urls li {
+    display: flex;
+    justify-content: space-between;
+}
+.popup .urls {
+    background: #efefef;
+    max-height: 4rem;
+    overflow-y: scroll;
+    padding: 4px 8px;
+}
