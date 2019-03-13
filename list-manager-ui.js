@@ -3,10 +3,20 @@
 const addButton = `<button class="button--add"><span class="visually-hidden">Add URL</span><span aria-hidden="true">+</span></button>`;
 
 const urlsContainer = document.querySelector('.url-lists');
+let hideFakes = false;
+
 urlsContainer.innerHTML = `<h1>Fake News Filter</h1>
 
 <h2>Fake URLs</h2>
 <ul class="urls urls--fake"></ul>
+<form class="form--hide-fake-urls">
+    <div>
+        <legend class="visually-hidden">Control display of Fake URL content:</legend>
+        <input type="checkbox" id="hide-fake-urls" ${
+            hideFakes ? 'checked' : ''
+        } /> <label for="hide-fake-urls">Hide Fake URL content</label>
+    </div>
+</form>
 <form class="form--fake">
     <legend class="visually-hidden">Add a new fake domain:</legend>
     <label class="visually-hidden" for="new-url--fake">Fake domain name</label><input id="new-url--fake" type="text" placeholder="Add fake domain name"/>
@@ -56,6 +66,20 @@ forms.forEach(form => {
         });
         return false;
     });
+});
+
+const hideFakeCheckbox = document.getElementById('hide-fake-urls');
+hideFakeCheckbox.addEventListener('change', e => {
+    const currentValue = e.target.checked;
+    chrome.storage.sync.set({ hideFakes: currentValue }, function() {
+        console.log(`Hide Fake URLs has been set to ${currentValue}.`);
+    });
+});
+
+chrome.storage.sync.get('hideFakes', hideFakeData => {
+    if (hideFakeData.hideFakes) {
+        hideFakeCheckbox.checked = true;
+    }
 });
 
 const removeButton = `<button class="button--remove"><span class="visually-hidden">Remove URL</span><span aria-hidden="true">X</span></button>`;
