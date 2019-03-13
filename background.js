@@ -79,6 +79,9 @@ chrome.runtime.onInstalled.addListener(function() {
     chrome.storage.sync.set({ urls: defaultURLs }, function() {
         console.log('The default URLs have been added:', defaultURLs);
     });
+    chrome.storage.sync.set({ hideFakes: false }, function() {
+        console.log('Hide Fake URLs has been set to false.');
+    });
     chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
         chrome.declarativeContent.onPageChanged.addRules([
             {
