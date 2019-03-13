@@ -14,6 +14,10 @@ form {
     justify-content: space-between;
     padding: 4px 8px;
 }
+form,
+ul {
+    max-width: 400px;
+}
 .urls {
     line-height: 1em;
     list-style-type: none;
