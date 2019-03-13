@@ -93,3 +93,27 @@ chrome.runtime.onInstalled.addListener(function() {
         ]);
     });
 });
+
+var isExtensionOn = true;
+
+chrome.runtime.onMessage.addListener(
+    function (request, sender, sendResponse) {
+        if (request.cmd === "setOnOffState") {
+            isExtensionOn = request.data.value;
+        }
+
+        if (request.cmd === "getOnOffState") {
+            sendResponse(isExtensionOn);
+        }
+    });
+
+/*var toggle = false;
+chrome.browserAction.onClicked.addListener(function(tab){
+    toggle = !toggle;
+    if(toggle){
+        chrome.tabs.executeScript(tab.id, {file:"contentScript.js"});
+    }
+    else{
+        chrome.tabs.executeScript(tab.id, {code:"alert()"});
+    }
+});*/
