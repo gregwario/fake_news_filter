@@ -90,7 +90,7 @@ chrome.storage.sync.get('hideFakes', hideFakeData => {
         hideFakeCheckbox.checked = true;
     }
 });
-const hideSatireeCheckbox = document.getElementById('hide-satire-urls');
+const hideSatireCheckbox = document.getElementById('hide-satire-urls');
 hideSatireCheckbox.addEventListener('change', e => {
     const currentValue = e.target.checked;
     chrome.storage.sync.set({ hideSatire: currentValue }, function() {
