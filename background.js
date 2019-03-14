@@ -27,7 +27,14 @@ const defaultURLs = {
         'conservativefrontline.com',
         'countynewsroom.info',
         'dailybuzzlive.com',
-        'stuppid.com'
+        'stuppid.com',
+        'thegatewaypundit.com',
+        'drudgereport.com',
+        'globalresearch.ca',
+        'libertywriters.com',
+        'naturalnews.com',
+        'newspunch.com',
+        'worldnewsdailyreport.com'
     ],
     real: [
         'cnn.com',
@@ -49,6 +56,13 @@ const defaultURLs = {
         'nbcwashington.com',
         'houstonpress.com',
         'latimes.com'
+        'ap.org/en-us/',
+        'wsj.com',
+        'snopes.com',
+        'reuters.com',
+        'economist.com',
+        'pbs.org/newshour/',
+        'pewresearch.org'
     ],
     satire: [
         'theonion.com',
@@ -71,7 +85,14 @@ const defaultURLs = {
         'islamicanews.com',
         'landoverbaptist.org',
         'nationalreport.net',
-        'scrappleface.com'
+        'scrappleface.com',
+        'scrappleface.com',
+        'babylonbee.com',
+        'thehardtimes.net',
+        'reductress.com',
+        'duffelblog.com',
+        'freewoodpost.net',
+        'christwire.org'
     ]
 };
 
