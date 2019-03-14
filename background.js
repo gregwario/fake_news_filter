@@ -82,6 +82,9 @@ chrome.runtime.onInstalled.addListener(function() {
     chrome.storage.sync.set({ hideFakes: false }, function() {
         console.log('Hide Fake URLs has been set to false.');
     });
+     chrome.storage.sync.set({ hideSatire: false }, function() {
+        console.log('Hide Satire URLs has been set to false.');
+    });
     chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
         chrome.declarativeContent.onPageChanged.addRules([
             {
