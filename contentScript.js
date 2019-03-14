@@ -41,9 +41,9 @@ chrome.storage.sync.get('urls', function(data) {
                 container.appendChild(createImg('real'));
             } else if (data.urls.satire.some(src => link.href.includes(src))) {
                 console.log(`Satire: ${link.href}`);
-                if(hideSatire){
+                if (hideSatire) {
                     container.parentElement.style.display = 'none';
-                } else{
+                } else {
                     container.style.backgroundColor = purple;
                     container.appendChild(createImg('satire'));
                 }
