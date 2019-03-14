@@ -109,14 +109,3 @@ chrome.runtime.onMessage.addListener(
             sendResponse(isExtensionOn);
         }
     });
-
-/*var toggle = false;
-chrome.browserAction.onClicked.addListener(function(tab){
-    toggle = !toggle;
-    if(toggle){
-        chrome.tabs.executeScript(tab.id, {file:"contentScript.js"});
-    }
-    else{
-        chrome.tabs.executeScript(tab.id, {code:"alert()"});
-    }
-});*/

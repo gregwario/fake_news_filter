@@ -26,11 +26,33 @@ function disableButton() {
     var disableButton = document.getElementById("disableButton");
     if (disableButton.innerHTML === "Disable") {
         isExtensionOn = false;
+        console.log('FNF now disabled');
     } else if (disableButton.innerHTML === "Enable") {
         isExtensionOn = true;
+        console.log('FNF now enabled');
     } else {
         alert("Error");
     }
+
+    chrome.extension.sendMessage({cmd: "setOnOffState", data: {value: isExtensionOn}});
+
+    chrome.extension.sendMessage({cmd: "getOnOffState"}, function (response) {
+    	console.log(response);
+        if (response !== undefined) {
+            if (response) {
+                disableButton.innerHTML = "Disable";
+                disableButton.className = "button button3";
+                disableButton.style.display = "";
+                //chrome.tabs.executeScript(tab.id, {file:"contentScript.js"});
+            }
+            else {
+                disableButton.innerHTML = "Enable";
+                disableButton.className = "button button1";
+                disableButton.style.display = "";
+                //chrome.tabs.executeScript(tab.id, {code:"alert()"});
+            }
+        }
+    });
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -38,24 +60,26 @@ document.addEventListener('DOMContentLoaded', function () {
     var br1 = document.getElementById("br1");
     var br2 = document.getElementById("br2");
 
-    chrome.extension.sendMessage({cmd: "setOnOffState", data: {value: isExtensionOn}});
 
+    chrome.extension.sendMessage({cmd: "setOnOffState", data: {value: isExtensionOn}});
+ 
     chrome.extension.sendMessage({cmd: "getOnOffState"}, function (response) {
+    	console.log(response);
         if (response !== undefined) {
             if (response) {
                 disableButton.innerHTML = "Disable";
                 disableButton.className = "button button3";
                 disableButton.style.display = "";
-                br1.style.display = "";
-                br2.style.display = "";
+                //chrome.tabs.executeScript(tab.id, {file:"contentScript.js"});
             }
             else {
                 disableButton.innerHTML = "Enable";
                 disableButton.className = "button button1";
                 disableButton.style.display = "";
-                br1.style.display = "";
-                br2.style.display = "";
+                //chrome.tabs.executeScript(tab.id, {code:"alert()"});
             }
         }
     });
 });
+
+document.getElementById("disableButton").addEventListener("click", disableButton);
