@@ -4,6 +4,7 @@ const addButton = `<button class="button--add"><span class="visually-hidden">Add
 
 const urlsContainer = document.querySelector('.url-lists');
 let hideFakes = false;
+let hideSatire = false;
 
 urlsContainer.innerHTML = `<h1>Fake News Filter</h1>
 
@@ -33,6 +34,14 @@ urlsContainer.innerHTML = `<h1>Fake News Filter</h1>
 
 <h2>Satire URLs</h2>
 <ul class="urls urls--satire"></ul>
+<form class="form--hide-satire-urls">
+    <div>
+        <legend class="visually-hidden">Control display of Satire URL content:</legend>
+        <input type="checkbox" id="hide-satire-urls" ${
+            hideSatire ? 'checked' : ''
+        } /> <label for="hide-satire-urls">Hide Satire URL content</label>
+    </div>
+</form>
 <form class="form--satire">
     <legend class="visually-hidden">Add a new satire domain:</legend>
     <label class="visually-hidden" for="new-url--satire">Satire domain name</label><input id="new-url--satire" type="text" placeholder="Add satire domain name" />
@@ -79,6 +88,19 @@ hideFakeCheckbox.addEventListener('change', e => {
 chrome.storage.sync.get('hideFakes', hideFakeData => {
     if (hideFakeData.hideFakes) {
         hideFakeCheckbox.checked = true;
+    }
+});
+const hideSatireeCheckbox = document.getElementById('hide-satire-urls');
+hideSatireCheckbox.addEventListener('change', e => {
+    const currentValue = e.target.checked;
+    chrome.storage.sync.set({ hideSatire: currentValue }, function() {
+        console.log(`Hide Satire URLs has been set to ${currentValue}.`);
+    });
+});
+
+chrome.storage.sync.get('hideSatire', hideSatireData => {
+    if (hideSatireData.hideSatire) {
+        hideSatireCheckbox.checked = true;
     }
 });
 
