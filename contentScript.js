@@ -13,6 +13,11 @@ chrome.storage.sync.get('urls', function(data) {
         if (hideFakeData.hideFakes) {
             hideFakes = true;
         }
+    let hideSatire = false;
+    chrome.storage.sync.get('hideSatire', hideSatireData => {
+        if (hideSatireData.hideSatire) {
+            hideSatire = true;
+        }
 
         const red = 'rgba(255,0,0,0.3)';
         const green = 'rgba(0,255,0,0.3)';
@@ -36,8 +41,12 @@ chrome.storage.sync.get('urls', function(data) {
                 container.appendChild(createImg('real'));
             } else if (data.urls.satire.some(src => link.href.includes(src))) {
                 console.log(`Satire: ${link.href}`);
-                container.style.backgroundColor = purple;
-                container.appendChild(createImg('satire'));
+                if (hideSatire) {
+                    container.parentElement.style.display = 'none';
+                } else {
+                    container.style.backgroundColor = purple;
+                    container.appendChild(createImg('satire'));
+                }
             } else {
                 console.log(`Indeterminate: ${link.href}`);
                 container.style.backgroundColor = orange;
@@ -45,5 +54,6 @@ chrome.storage.sync.get('urls', function(data) {
             }
             container.style.display = 'flex';
         });
+    });
     });
 });
