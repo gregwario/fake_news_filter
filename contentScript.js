@@ -55,4 +55,5 @@ chrome.storage.sync.get('urls', function(data) {
             container.style.display = 'flex';
         });
     });
+    });
 });
